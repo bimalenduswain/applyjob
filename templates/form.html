@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Send Cover Letter Email</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100v;
+        }
+
+        .form-container {
+            background: white;
+            padding: 30px 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 480px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+            margin-top: 15px;
+            color: #444;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="url"] {
+            width: 100%;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            margin-top: 4px;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 15px;
+            background-color: #0073e6;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #005bb5;
+        }
+
+        .status {
+            margin-top: 20px;
+            text-align: center;
+            font-weight: bold;
+            color: green;
+        }
+
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Send Cover Letter Email</h2>
+        <form action="/send-email" method="post">
+            <label for="email_id">Email ID:</label>
+            <input type="email" name="email_id" id="email_id" required>
+
+            <label for="receiver_name">Receiver Name:</label>
+            <input type="text" name="receiver_name" id="receiver_name">
+
+            <label for="position">Position:</label>
+            <input type="text" name="position" id="position" required>
+
+            <label for="linkedin">LinkedIn URL:</label>
+            <input type="url" name="linkedin" id="linkedin" required
+                   value="https://www.linkedin.com/in/bimalendu-swain-14736121a/">
+
+            <label for="github">GitHub URL:</label>
+            <input type="url" name="github" id="github" required
+                   value="https://github.com/bimalenduswain">
+
+            <button type="submit">Send Email</button>
+        </form>
+
+        {% if status %}
+            <div class="status {{ 'error' if 'Error' in status or '❌' in status else '' }}">
+                {{ status }}
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
